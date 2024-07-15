@@ -19,9 +19,10 @@ export default function Register() {
     });
     const data = await res.json();
     if (data.success) {
-      setMessage('User registered successfully');
+      alert('User registered successfully');
+      window.location.href = '/'
     } else {
-      setMessage('Registration failed: ' + data.error);
+      alert('Registration failed: ' + data.error);
     }
   };
 

@@ -4,13 +4,14 @@ const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const { name, email, password } = req.body;
+    const { name, email, password, createdAt } = req.body;
     try {
-      const user = await prisma.pessoa.create({
+      const user = await prisma.person.create({
         data: {
           name,
           email,
           password,
+          createdAt
         },
       });
       res.status(200).json({ success: true, user });

@@ -1,10 +1,16 @@
 import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export const Header = () => {
-  const isAuthenticated = true
+  const [ isAuthenticated, setAuthenticated ] = useState(false)
+
+  useEffect(() => {
+    if(typeof window !== "undefined"){
+      setAuthenticated(!!localStorage.getItem('isAuthenticated'))
+    }
+  }, [])
 
   return (
     <>
